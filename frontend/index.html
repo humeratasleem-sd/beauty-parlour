@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blush Beauty </title>
+  <style>
+    /* --- Same CSS as your original (no change) --- */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffe6f2, #ffd6ec);
+      margin: 0;
+      padding: 0;
+      color: #333;
+      overflow-x: hidden;
+    }
+    section { text-align: center; padding: 60px 20px; transition: all 0.5s ease-in-out; }
+    h1,h2 { color:#d63384;font-weight:700; }
+    button{background:#ff66b2;color:white;padding:12px 30px;border:none;border-radius:30px;font-size:16px;cursor:pointer;transition:0.3s;}
+    button:hover{background:#e60073;transform:scale(1.05);}
+    .page{display:none;}
+    .active{display:block;animation:fadeIn 0.8s ease-in-out;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    img.logo{width:140px;border-radius:50%;box-shadow:0 0 15px #ffb3d9;}
+    form{background:white;border-radius:20px;padding:30px;max-width:480px;margin:0 auto;box-shadow:0 8px 25px rgba(255,105,180,0.3);}
+    input,select{width:90%;padding:12px;margin:10px 0;border-radius:10px;border:1px solid #ccc;font-size:15px;}
+    input:focus,select:focus{border-color:#ff66b2;box-shadow:0 0 8px #ffcce0;outline:none;}
+    .thankyou{font-size:22px;color:#e60073;font-weight:bold;}
+    .appointment-card{background:white;border-radius:25px;padding:40px;max-width:900px;margin:0 auto;box-shadow:0 8px 25px rgba(255,105,180,0.3);text-align:left;}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-bottom:25px;}
+    .service-box{background:#fff0f6;padding:15px;border-radius:15px;border:1px solid #ffcce0;text-align:center;cursor:pointer;transition:0.3s;display:flex;flex-direction:column;align-items:center;}
+    .service-box:hover{background:#ffd6eb;transform:translateY(-5px);}
+    .service-box img{width:72px;height:72px;border-radius:12px;object-fit:cover;margin-bottom:6px;box-shadow:0 0 8px rgba(255,105,180,0.25);}
+    table{width:90%;border-collapse:collapse;margin:20px auto;background:white;border-radius:15px;box-shadow:0 5px 20px rgba(255,105,180,0.3);}
+    th,td{padding:12px;border-bottom:1px solid #ffe0f0;text-align:center;}
+    th{background:#ffb3d9;color:white;}
+    tr:hover{background:#ffe6f5;}
+    .muted{color:#666;font-size:14px;}
+  </style>
+</head>
+<body>
+  <!-- --- Your HTML content unchanged (welcome, login, register, appointment, booked, thankyou) --- -->
+  <!-- KEEP your full HTML structure exactly as before -->
+   
+  <!-- Page 1: Welcome -->
+  <section id="welcome" class="page active">
+    <img src="images/logo.jpeg" alt="Logo" class="logo" />
+    <h1>Welcome to Blush Beauty </h1>
+    <p class="muted">Where elegance meets perfection. Let’s glam you up!</p>
+    <button onclick="nextPage('login')">Get Started</button>
+  </section>
+
+  <!-- Page 2: Login/Register -->
+  <section id="login" class="page">
+    <h2>Customer Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required />
+      <input type="password" id="loginPassword" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <p class="muted">Don’t have an account? <a href="#" onclick="nextPage('register')">Register here</a></p>
+    </form>
+  </section>
+
+  <section id="register" class="page">
+    <h2>Register Account</h2>
+    <form id="registerForm">
+      <input type="text" id="regName" placeholder="Full Name" required />
+      <input type="email" id="regEmail" placeholder="Email" required />
+      <input type="password" id="regPassword" placeholder="Password" required />
+      <button type="submit">Register</button>
+      <p class="muted">Already registered? <a href="#" onclick="nextPage('login')">Login here</a></p>
+    </form>
+  </section>
+
+  <!-- Page 3: Appointment -->
+  <section id="appointment" class="page">
+    <div class="appointment-card">
+      <h2>Book Your Appointment </h2>
+      <form id="appointmentForm">
+        <div class="form-group">
+          <label>Full Name:</label><br />
+          <input type="text" id="custName" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <label>Email:</label><br />
+          <input type="email" id="custEmail" placeholder="Your Email" required />
+        </div>
+
+        <label>Select Services:</label>
+        <div class="services-grid" id="services">
+          <!-- service images refer to images/service1.jpg .. service10.jpg -->
+          <div class="service-box">
+            <img src="images/service1.jpg" alt="Hair" onerror="this.src='images/hair.jpeg'">
+            <div>Hair Styling</div>
+            <input type="checkbox" value="Hair Styling">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service2.jpg" alt="Nail" onerror="this.src='images/nail.jpeg'">
+            <div>Nail Art</div>
+            <input type="checkbox" value="Nail Art">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service3.jpg" alt="Spa" onerror="this.src='images/spa.jpeg'">
+            <div>Luxury Spa</div>
+            <input type="checkbox" value="Luxury Spa">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service4.jpg" alt="Makeup" onerror="this.src='images/makeup.jpeg'">
+            <div>Makeup</div>
+            <input type="checkbox" value="Makeup">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service5.jpg" alt="Facials" onerror="this.src='images/facial.jpeg'">
+            <div>Facials</div>
+            <input type="checkbox" value="Facials">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service6.jpg" alt="Waxing" onerror="this.src='images/waxing.jpeg'">
+            <div>Waxing</div>
+            <input type="checkbox" value="Waxing">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service7.jpg" alt="Eyelash" onerror="this.src='images/extension.jpeg'">
+            <div>Eyelash Extensions</div>
+            <input type="checkbox" value="Eyelash Extensions">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service8.jpg" alt="Threading" onerror="this.src='images/threading.jpeg'">
+            <div>Threading</div>
+            <input type="checkbox" value="Threading">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service9.jpg" alt="Pedicure" onerror="this.src='images/pedicure.jpeg'">
+            <div>Pedicure</div>
+            <input type="checkbox" value="Pedicure">
+          </div>
+
+          <div class="service-box">
+            <img src="images/service10.jpg" alt="Massage" onerror="this.src='images/massage.jpeg'">
+            <div>Body Massage</div>
+            <input type="checkbox" value="Body Massage">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Select Parlour:</label><br />
+          <select id="parlour" required>
+            <option value="">-- Choose Parlour --</option>
+            <option>Blush Beauty – Guntur</option>
+            <option>Blush Elite – Vijayawada</option>
+            <option>Blush Glow – Hyderabad</option>
+            <option>Blush Luxe – Chennai</option>
+            <option>Blush Charm – Bengaluru</option>
+            <option>Blush Studio – Mumbai</option>
+            <option>Blush Aesthetic – Delhi</option>
+            <option>Blush Signature – Kolkata</option>
+            <option>Blush Glam – Pune</option>
+            <option>Blush Premium – Chandigarh</option>
+            <option>Blush Bliss – Jaipur</option>
+            <option>Blush Aura – Ahmedabad</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Select Date:</label><br />
+          <input type="date" id="date" required />
+        </div>
+
+        <div class="form-group">
+          <label>Select Time Slot:</label><br />
+          <select id="time" required>
+            <option value="">-- Choose Time --</option>
+            <option>09:00 AM - 10:00 AM</option>
+            <option>10:00 AM - 11:00 AM</option>
+            <option>11:00 AM - 12:00 PM</option>
+            <option>12:00 PM - 01:00 PM</option>
+            <option>02:00 PM - 03:00 PM</option>
+            <option>03:00 PM - 04:00 PM</option>
+            <option>04:00 PM - 05:00 PM</option>
+            <option>05:00 PM - 06:00 PM</option>
+            <option>06:00 PM - 07:00 PM</option>
+          </select>
+        </div>
+
+        <button type="submit">Confirm Appointment</button>
+      </form>
+      <p class="muted" style="text-align:center; margin-top:12px;">Tip: select one or more services. Time slots are 1 hour.</p>
+    </div>
+  </section>
+
+  <!-- Page 4: Booked Appointments -->
+  <section id="booked" class="page">
+    <h2> Booked Appointments</h2>
+    <table id="bookedTable" aria-live="polite">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Parlour</th>
+          <th>Services</th>
+          <th>Date</th>
+          <th>Time Slot</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div style="margin-top:16px;">
+      <button onclick="nextPage('thankyou')">Continue ➜</button>
+    </div>
+  </section>
+
+  <!-- Page 5: Thank You -->
+  <section id="thankyou" class="page">
+    <h2 class="thankyou">Thank You for Booking with Blush Beauty! </h2>
+    <p>We can’t wait to pamper you! </p>
+  </section>
+
+
+
+  <script>
+    const API_BASE = "http://localhost:5000/api";
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split("T")[0];
+      document.getElementById("date").setAttribute("min", today);
+      showSection('welcome');
+    });
+
+    function showSection(id) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+      window.scrollTo(0, 0);
+    }
+    function nextPage(id) { showSection(id); }
+
+    function getStartTime24(optionText) {
+      const part = optionText.split('-')[0].trim();
+      const [time, meridian] = part.split(' ');
+      let [hh, mm] = time.split(':').map(Number);
+      if (meridian === 'PM' && hh !== 12) hh += 12;
+      if (meridian === 'AM' && hh === 12) hh = 0;
+      return `${hh.toString().padStart(2,'0')}:${mm.toString().padStart(2,'0')}`;
+    }
+
+    // --- REGISTER ---
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
+
+      try {
+        const res = await fetch(`${API_BASE}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) return alert(data.message || "Registration failed");
+        alert("Registered successfully! Please login.");
+        showSection('login');
+      } catch (err) {
+        alert("Server error during registration");
+        console.error(err);
+      }
+    });
+
+    // --- LOGIN ---
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+
+      try {
+        const res = await fetch(`${API_BASE}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) return alert(data.message || "Invalid credentials");
+        alert(`Welcome ${data.user.name}!`);
+        showSection('appointment');
+      } catch (err) {
+        alert("Server error during login");
+        console.error(err);
+      }
+    });
+
+    // --- BOOK APPOINTMENT ---
+    document.getElementById("appointmentForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("custName").value.trim();
+      const email = document.getElementById("custEmail").value.trim();
+      const parlour = document.getElementById("parlour").value;
+      const date = document.getElementById("date").value;
+      const timeOption = document.getElementById("time").value;
+      const services = Array.from(document.querySelectorAll("#services input:checked")).map(i => i.value);
+
+      if (!name || !email || !parlour || !date || !timeOption || services.length === 0) {
+        return alert("Please fill all fields and select at least one service.");
+      }
+
+      const startTime = getStartTime24(timeOption);
+      const selectedIso = `${date}T${startTime}:00`;
+      const selectedDateObj = new Date(selectedIso);
+      if (selectedDateObj <= new Date()) {
+        return alert("You cannot book a past date/time.");
+      }
+
+      try {
+        const res = await fetch(`${API_BASE}/appointment`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, parlour, date, time: startTime, services })
+        });
+        const data = await res.json();
+        if (!res.ok) return alert(data.message || "Booking failed");
+        alert("Appointment booked successfully!");
+        loadAppointments();
+      } catch (err) {
+        alert("Error connecting to server");
+        console.error(err);
+      }
+    });
+
+    // --- FETCH ALL BOOKINGS ---
+    async function loadAppointments() {
+      try {
+        const res = await fetch(`${API_BASE}/appointments`);
+        const data = await res.json();
+        updateBookedTable(data);
+        showSection('booked');
+      } catch (err) {
+        console.error("Error fetching appointments", err);
+      }
+    }
+
+    function updateBookedTable(appointments) {
+      const tbody = document.querySelector("#bookedTable tbody");
+      tbody.innerHTML = "";
+      if (!appointments || appointments.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="muted">No bookings yet</td></tr>`;
+        return;
+      }
+      appointments.forEach(b => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${escapeHtml(b.name)}</td>
+          <td>${escapeHtml(b.parlour)}</td>
+          <td>${escapeHtml(b.services.join(", "))}</td>
+          <td>${escapeHtml(b.date)}</td>
+          <td>${escapeHtml(b.time)}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text.replace(/[&<>"'`=\/]/g, s => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;',
+        '/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
+      }[s]));
+    }
+  </script>
+</body>
+</html>
